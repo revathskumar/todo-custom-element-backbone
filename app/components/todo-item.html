@@ -1,0 +1,71 @@
+<template id="item">
+  <style type="text/css" media="screen">
+    @import url("../bower_components/sass-bootstrap/dist/css/bootstrap.css");
+    p, b, input[type='checkbox'] {
+      margin: 0;
+      /*height: 23px;*/
+    }
+    p {
+      width: 50%;
+      margin: 0 auto;
+    }
+    span, input[type='checkbox'] {
+      margin: 10px 0;
+    }
+    #content {
+      font-weight: bold;
+    }
+    #content.done {
+      text-decoration: line-through;
+      font-weight: normal;
+    }
+  </style>
+  <p>
+    <span class="delete pull-left glyphicon glyphicon-trash"></span>
+    <span id="content">
+      <content></content>
+    </span>
+
+    <input type="checkbox" class="pull-right" />
+  </p>
+</template>
+<script type="text/javascript">
+(function(){
+  var importDoc = document.currentScript.ownerDocument;
+  var TodoItem = Object.create(HTMLElement.prototype);
+  TodoItem.attributeChangedCallback = function(attr, oldVal, newVal){
+    root = this.shadowRoot;
+    if(attr == 'done' && this.attributes.done != undefined){
+      done = this.attributes.done.value;
+      root.querySelector('input').checked = true;
+      root.querySelector('#content').className = 'done';
+    }else{
+      root.querySelector('input').checked = false;
+      root.querySelector('#content').className = '';
+    }
+  }
+
+  TodoItem.createdCallback = function () {
+    var root = this.createShadowRoot();
+    var t = importDoc.querySelector('#item');
+    root.appendChild(document.importNode(t.content, true));
+  }
+
+  TodoItem.attachedCallback = function () {
+    console.log('Attached');
+    root = this.shadowRoot;
+    var that = this;
+    root.querySelector('input').addEventListener('change', function(e){
+      if(e.target.checked){
+        this.setAttribute('done', '');
+      }else{
+        this.removeAttribute('done');
+      }
+    }.bind(this));
+
+  }
+  var item = document.registerElement('todo-item', {
+    prototype: TodoItem
+  });
+})();
+</script>
