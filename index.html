@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TodoCustomElement</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/2c16e25b.main.css">
+
+        <link rel="import" href="components/todo-app.html">
+        <link rel="import" href="components/todo-item.html">
+
+        <script src="scripts/vendor/a52a8685.modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="text-muted">TodoCustomElement</h3>
+            </div>
+
+            <div class="jumbotron">
+                <div class="yeoman"></div>
+                <todo-app>
+                    <div class="todo_form">
+                        <div class="form-group">
+                            <div class="controls">
+                              <input type="text" name="todo" class="form-control" id="new-todo" placeholder="Type & press enter to add todo">
+                            </div>
+                        </div>
+                    </div>
+                </todo-app>
+            </div>
+
+            <div class="footer">
+                <p>&#x2665; from the Yeoman team</p>
+            </div>
+        </div>
+
+        <script src="scripts/01e17abc.vendor.js"></script>
+
+        <script src="scripts/fe72825f.main.js"></script>
+</body>
+</html>

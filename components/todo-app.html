@@ -1,0 +1,19 @@
+<template id='app'>
+  <content select='.todo_form'></content>
+  <content select='todo-item'></content>
+</template>
+<script type="text/javascript">
+(function(){
+  var importDoc = document.currentScript.ownerDocument;
+  var TodoApp = Object.create(HTMLElement.prototype);
+  TodoApp.attachedCallback = function () {
+    console.log('Attached');
+    var root = this.createShadowRoot();
+    var t = importDoc.querySelector('#app')
+    root.appendChild(document.importNode(t.content, true));
+  }
+  var app = document.registerElement('todo-app', {
+    prototype: TodoApp
+  });
+})();
+</script>
