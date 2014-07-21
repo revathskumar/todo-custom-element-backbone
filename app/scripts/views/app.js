@@ -9,13 +9,8 @@ TodoCustomElement.Views = TodoCustomElement.Views || {};
 
         tagName: 'todo-app',
 
-        id: '',
-
-        className: '',
-
         events: {
             'keypress input': 'createOnEnter',
-            'itemchange todo-item': 'done'
         },
 
         initialize: function () {
@@ -27,21 +22,11 @@ TodoCustomElement.Views = TodoCustomElement.Views || {};
             this.$el.append(view.render().el);
         },
 
-        done: function (e){
-            console.log(e.currentTarget)
-            if ($(e.target).attr('done') !== undefined) {
-                $(e.target).removeAttr('done');
-            }
-            else{
-                $(e.target).attr('done', '');
-            }
-        },
-
         createOnEnter: function (e) {
             console.log('keypress');
             this.$input = $(e.target);
             if (e.which === 13 && this.$input.val().trim()) {
-                TodoCustomElement.todos.create({todo: this.$input.val()});
+                TodoCustomElement.todos.create({todo: this.$input.val(), done: false});
                 this.$input.val('');
             }
         },

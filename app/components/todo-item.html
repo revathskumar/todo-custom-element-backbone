@@ -19,6 +19,9 @@
       text-decoration: line-through;
       font-weight: normal;
     }
+    .delete {
+      cursor: pointer;
+    }
   </style>
   <p>
     <span class="delete pull-left glyphicon glyphicon-trash"></span>
@@ -61,6 +64,13 @@
       }else{
         this.removeAttribute('done');
       }
+      var evt = new CustomEvent("itemchange", {"detail":{"done":e.target.checked}});
+      this.dispatchEvent(evt);
+    }.bind(this));
+
+    root.querySelector('.delete').addEventListener('click', function(e){
+      var evt = new CustomEvent("remove", {"detail":{"item":this}});
+      this.dispatchEvent(evt);
     }.bind(this));
 
   }
