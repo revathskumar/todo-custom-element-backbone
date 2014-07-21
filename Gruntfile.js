@@ -222,7 +222,9 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
+                        'bower_components/sass-bootstrap/fonts/*.*',
+                        'components/*.html',
+                        'bower_components/sass-bootstrap/dist/css/bootstrap.css'
                     ]
                 }]
             }
