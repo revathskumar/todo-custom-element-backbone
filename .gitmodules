@@ -1,0 +1,4 @@
+[submodule "dist"]
+	path = dist
+	url = git@github.com:revathskumar/todo-custom-element-backbone.git
+	branch = gh-pages
